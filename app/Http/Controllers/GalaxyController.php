@@ -41,7 +41,7 @@ class GalaxyController extends Controller
     public function show(string $galaxyModel, string $id, GalaxyExecutorService $galaxyExecutorService)
     {
         $data = $galaxyExecutorService->first($galaxyModel, ['id' => $id]);
-        return view('galaxy.show', compact('data'));
+        return view('galaxy.show', compact('data', 'galaxyModel'));
     }
 
     /**
@@ -50,7 +50,7 @@ class GalaxyController extends Controller
     public function edit(string $galaxyModel, string $id, GalaxyExecutorService $galaxyExecutorService)
     {
         $data = $galaxyExecutorService->first($galaxyModel, ['id' => $id]);
-        return view('galaxy.edit', compact('data'));
+        return view('galaxy.edit', compact('data', 'galaxyModel'));
     }
 
     /**

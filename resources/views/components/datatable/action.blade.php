@@ -1,4 +1,9 @@
 <div class="flex gap-1 justify-center">
+    <a class="bg-sky-400 hover:bg-sky-500 active:bg-sky-600 p-2 rounded" href="{{ route('galaxy.show', [$galaxyModel, $value]) }}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+            <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+        </svg>
+    </a>
     <a class="bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 p-2 rounded" href="{{ route('galaxy.edit', [$galaxyModel, $value]) }}">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
             <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />

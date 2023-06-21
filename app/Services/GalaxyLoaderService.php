@@ -34,6 +34,7 @@ class GalaxyLoaderService
                 }
                 return $valid;
             });
-        return $models->values();
+        $values = $models->values()->map(fn($item) => explode('\\', $item)[count(explode('\\', $item)) - 1]);
+        return $values;
     }
 }

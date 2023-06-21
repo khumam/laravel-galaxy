@@ -32,7 +32,9 @@ class GalaxyTableLivewire extends DataTableComponent
         $columns = [Column::make("Id", "id")->format(fn() => ++$this->index + ($this->page - 1) * $this->perPage)];
 
         foreach ($this->model->getFillable() as $item) {
-            array_push($columns, Column::make($item, $item)->sortable());
+            if (!in_array($item, $this->model->getHidden())) {
+                array_push($columns, Column::make($item, $item)->sortable()->searchable());
+            }
         }
 
         array_push($columns, Column::make('Actions', 'id')->format(function ($value, $column, $row) use ($galaxyModel) {
