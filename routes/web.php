@@ -33,6 +33,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('galaxy')->group(function () {
+        Route::get('/', [GalaxyController::class, 'main'])->name('galaxy.main');
         Route::get('{galaxyModel}', [GalaxyController::class, 'index'])->name('galaxy.index');
         Route::get('{galaxyModel}/create', [GalaxyController::class, 'create'])->name('galaxy.create');
         Route::get('{galaxyModel}/{id}/show', [GalaxyController::class, 'show'])->name('galaxy.show');

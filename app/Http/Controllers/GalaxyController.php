@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Services\GalaxyExecutorService;
+use App\Services\GalaxyLoaderService;
 use App\Services\ModelLoaderService;
 use Illuminate\Http\Request;
 
 class GalaxyController extends Controller
 {
+    public function main(GalaxyLoaderService $galaxyLoaderService)
+    {
+        $models = $galaxyLoaderService->load();
+        $galaxyModel = $models[0];
+        return view('galaxy.index', compact('galaxyModel'));
+    }
     /**
      * Display a listing of the resource.
      */

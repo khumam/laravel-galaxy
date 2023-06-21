@@ -1,66 +1,82 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://github.com/khumam/laravel-galaxy" target="_blank"><img src="https://raw.githubusercontent.com/khumam/laravel-galaxy/main/public/logo/main.svg" width="400" alt="Laravel Galaxy Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## About Laravel Galaxy
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Laravel Galaxy is an Laravel's boilerplate (at least for now) with modified feature that will create the dynamic CRUD or the data management service. This dynamic data will read your models list. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## What is the inside of Laravel Galaxy?
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- We use Laravel 10
+- Laravel Sail
+- Laravel Breeze
+- Laravel Socialite
+- Galaxy features 
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+If you want to install the Laravel Galaxy, make sure you have docker installed on your machine, because we will use Laravel Sail (You can use php artisan serve manualy but set your db to manualy too).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+> Atentions please!
+>
+> Please note that this is in beta and development process. You will find a lot of bugs
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+First clone this repository
+```
+git clone git@github.com:khumam/laravel-galaxy.git
+```
 
-## Laravel Sponsors
+Next we need to install the composer, run
+```
+composer install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Then you also need to init the npm because we use Laravel Breeze, run
+```
+npm install
+```
 
-### Premium Partners
+Make sure you already copied the .env and fill with the credentials. Make sure this database filled with (if you use your db configuration, ignore it)
+```
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravelgalaxy
+DB_USERNAME=sail
+DB_PASSWORD=password
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Run the Laravel using Sail and npm
+```
+./vendor/bin/sail up -d
+npm run dev
+```
 
-## Contributing
+## Usage
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+You can create the model and migrations as usual. Run
+```
+php artisan make:model YourModelName -m
+```
 
-## Code of Conduct
+Those command will create two files
+- Your model
+- Your migration's model
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Then fill the migration with whatever you need (You can use uuid instead of id because in this boilerplate all data use uuid). Don't forget to migrate it. And if you use sail, run
+```
+./vendor/bin/sail artisan migrate
+```
 
-## Security Vulnerabilities
+Then open your model file. Add this 
+```
+protected $fillable = [
+    // list all of your fillable column
+];
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+protected $hidden = [
+    // list of hidden column such as password, token, etc
+];
+```
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Go and check `http://localhost:80/galaxy`
