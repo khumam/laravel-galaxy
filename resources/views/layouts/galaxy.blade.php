@@ -18,6 +18,7 @@
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     {{ __('Welcome to Galaxy Dashboard') }}
                 </h2>
+                <p class="font-sm font-light text-gray-500 mt-1">All of your Models will be listed here</p>
             </div>
 
         </header>
