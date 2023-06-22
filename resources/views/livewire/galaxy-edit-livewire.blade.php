@@ -1,7 +1,7 @@
 <div class="w-full">
     <div class="shadow">
         <div class="bg-white p-4 rounded-tl rounded-tr border-b">
-            <h1 class="text-gray-800">Update {{ \Str::lower($model) }}</h1>
+            <h1 class="text-gray-800 font-medium">Update {{ \Str::lower($model) }}</h1>
         </div>
         <div class="border p-4 bg-gray-100 border-bl border-br">
             <div class="w-full">
